@@ -33,31 +33,36 @@ console.log(getHumanChoice())
 let humanScore = 0;
 let computerScore = 0;
 
+
 // Write logic to play a single round
-// count is returning 2 for a win instead of 1
+
 
 function playRound(humanChoice, computerChoice) 
 {
-    humanScore = 0;
-    computerScore = 0;
-    if(humanChoice === 'rock' && computerChoice === 'rock' ) {
+        if(humanChoice === 'rock' && computerChoice === 'rock' ) {
         return "its a draw!"; }
     else if(humanChoice === 'paper' && computerChoice === 'paper') {
         return "its a draw!"; }
     else if (humanChoice === 'scissors' && computerChoice === 'scissors') {
         return "its a draw!"; }
     else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-        return "Computer wins!  Scissors beats paper.", ++computerScore; }
+        computerScore +=.5;  // tried using ++ but kept adding 2 instead of 1?
+        return "Computer wins!  Scissors beats paper.";}
     else if (humanChoice === 'paper' && computerChoice === 'rock') {
-        return "Human wins!  Paper beats rock.", ++humanScore; }
+        humanScore +=.5;
+        return "Human wins!  Paper beats rock.";}
     else if (humanChoice === 'rock' && computerChoice === 'paper') {
-        return "Computer wins!  Paper beats rock.", ++computerScore; }
+        computerScore +=.5;
+        return "Computer wins!  Paper beats rock.";}
     else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-        return "Human wins!  Rock beats scissors.", ++humanScore; }
+        humanScore +=.5;
+        return "Human wins!  Rock beats scissors.";}
     else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-        return "Human wins!  Scissors beats paper.", ++humanScore; }
+        humanScore +=.5;
+        return "Human wins!  Scissors beats paper.";}
     else if (humanChoice === 'scissors' && computerChoice === 'rock') { 
-        return "Computer wins!  Rock beats scissors.", ++computerScore; }
+        computerScore +=.5;
+        return "Computer wins!  Rock beats scissors.";}
     else { return ''
     };   
 }
