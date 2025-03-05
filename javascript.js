@@ -15,7 +15,7 @@ function getComputerChoice() {
        }
     }
 
-console.log(getComputerChoice())
+console.log(getComputerChoice()) // shows computer choice in console
 
 // Prompt user to enter rock, paper or scissors and assign to getHumanChoice
 // convert input to all lower case
@@ -26,19 +26,23 @@ function getHumanChoice() {
     return input.toLowerCase();
 }
 
-console.log(getHumanChoice())
+console.log(getHumanChoice()) // shows human choice in console
 
 // Declare player score variables as humanScore and computerScore
 
 let humanScore = 0;
 let computerScore = 0;
 
-
 // Write logic to play a single round
+// Declare winner and assign score to humanScore and computerScore under a single round (playRound)
+
 
 
 function playRound(humanChoice, computerChoice) 
 {
+    // write a check for if humanScore + computerScore = 0 
+    // if 0 set both humanScore and computerScore to 0
+    // if humanScore + computerScore >= 1 then allow to run as-is
         if(humanChoice === 'rock' && computerChoice === 'rock' ) {
         return "its a draw!"; }
     else if(humanChoice === 'paper' && computerChoice === 'paper') {
@@ -46,22 +50,22 @@ function playRound(humanChoice, computerChoice)
     else if (humanChoice === 'scissors' && computerChoice === 'scissors') {
         return "its a draw!"; }
     else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-        computerScore +=.5;  // tried using ++ but kept adding 2 instead of 1?
+        computerScore +=1;  // increments by 2 on first loop?
         return "Computer wins!  Scissors beats paper.";}
     else if (humanChoice === 'paper' && computerChoice === 'rock') {
-        humanScore +=.5;
+        humanScore +=1;
         return "Human wins!  Paper beats rock.";}
     else if (humanChoice === 'rock' && computerChoice === 'paper') {
-        computerScore +=.5;
+        computerScore +=1;
         return "Computer wins!  Paper beats rock.";}
     else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-        humanScore +=.5;
+        humanScore +=1;
         return "Human wins!  Rock beats scissors.";}
     else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-        humanScore +=.5;
+        humanScore +=1;
         return "Human wins!  Scissors beats paper.";}
     else if (humanChoice === 'scissors' && computerChoice === 'rock') { 
-        computerScore +=.5;
+        computerScore +=1;
         return "Computer wins!  Rock beats scissors.";}
     else { return ''
     };   
@@ -70,12 +74,12 @@ function playRound(humanChoice, computerChoice)
 const computerSelection = getComputerChoice();
 const humanSelection = getHumanChoice();
 
-
-playRound(humanSelection, computerSelection);
 console.log(playRound(humanSelection, computerSelection));
 console.log(humanScore);
 console.log(computerScore);
 
-// Decare winner and assign score to humanScore and computerScore under a single round (playRound)
+
 
 // Loop game for 5 rounds, keeping overall score
+//create a playGame function to call playGame for 5 rounds
+// move the playRound function inside of playGame
