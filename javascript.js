@@ -1,9 +1,6 @@
 
-// Create function named getComputerChoice where rock, paper or scissors is randomly selected
-
+// Generate random number for rock, paper or scissors for computer
 let randomNumber = Math.random()
-
-console.log(randomNumber)
 
 function getComputerChoice() {
         if (randomNumber < 0.33) {
@@ -15,10 +12,9 @@ function getComputerChoice() {
        }
     }
 
-console.log(getComputerChoice()) // shows computer choice in console
+console.log("Computer has selected "+getComputerChoice()) // shows computer choice in console
 
-// Prompt user to enter rock, paper or scissors and assign to getHumanChoice
-// convert input to all lower case
+// Generate human selection
 
 let input = prompt("Please enter rock, paper or scissors");
 
@@ -26,31 +22,24 @@ function getHumanChoice() {
     return input.toLowerCase();
 }
 
-console.log(getHumanChoice()) // shows human choice in console
+console.log("You selected "+getHumanChoice()) // shows human choice in console
 
-// Declare player score variables as humanScore and computerScore
+// set initial scores to 0
 
 let humanScore = 0;
 let computerScore = 0;
 
-// Write logic to play a single round
-// Declare winner and assign score to humanScore and computerScore under a single round (playRound)
+// play a single round of rock, paper, scissors
 
-
-
-function playRound(humanChoice, computerChoice) 
-{
-    // write a check for if humanScore + computerScore = 0 
-    // if 0 set both humanScore and computerScore to 0
-    // if humanScore + computerScore >= 1 then allow to run as-is
-        if(humanChoice === 'rock' && computerChoice === 'rock' ) {
+function playRound(humanChoice, computerChoice) {
+    if(humanChoice === 'rock' && computerChoice === 'rock' ) {
         return "its a draw!"; }
     else if(humanChoice === 'paper' && computerChoice === 'paper') {
         return "its a draw!"; }
     else if (humanChoice === 'scissors' && computerChoice === 'scissors') {
         return "its a draw!"; }
     else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-        computerScore +=1;  // increments by 2 on first loop?
+        computerScore +=1;  
         return "Computer wins!  Scissors beats paper.";}
     else if (humanChoice === 'paper' && computerChoice === 'rock') {
         humanScore +=1;
@@ -75,11 +64,29 @@ const computerSelection = getComputerChoice();
 const humanSelection = getHumanChoice();
 
 console.log(playRound(humanSelection, computerSelection));
-console.log(humanScore);
-console.log(computerScore);
+console.log("Your score is "+humanScore);
+console.log("Computer score is "+computerScore);
 
 
 
 // Loop game for 5 rounds, keeping overall score
-//create a playGame function to call playGame for 5 rounds
-// move the playRound function inside of playGame
+
+// endGame function to display when gamve is over
+
+function endGame() {
+    if (humanScore > computerScore) {
+        console.log("Congrats you win with a total of " +humanScore)
+    }
+    else if (computerScore > humanScore) {
+        console.log("You lose! The computer won with a total of " +computerScore)
+    }
+}
+// Function to call playRound until five rounds are played
+
+function playGame() { 
+    if (humanScore + computerScore === 5) {
+        endGame()
+    } else { // Nest entire script in here outside of endGame function?
+    playRound();
+    } 
+}
