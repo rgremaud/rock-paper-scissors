@@ -24,15 +24,15 @@ function getHumanChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+let tieScore = 0;
 
 // play a single round of rock, paper, scissors
 
 function playRound() {
     let computerSelection = getComputerChoice();
-    console.log("Computer has selected " +computerSelection)
     let humanSelection = getHumanChoice();
-    console.log("Human has selected " +humanSelection)
     if(humanSelection === computerSelection) {
+        tieScore +=1;
         return "its a draw!"; }
     else if (humanSelection === 'paper' && computerSelection === 'scissors') {
         computerScore +=1;  
@@ -64,25 +64,26 @@ function playRound() {
 
 function gameOver() {
     if (humanScore > computerScore) {
-        console.log("Congrats you win with a total of " +humanScore);
+        console.log("Congrats! You win with a total of " + humanScore + ".  The computer scored " + computerScore +".");
     }
     else if (computerScore > humanScore) {
-        console.log("You lose! The computer won with a total of " +computerScore);
+        console.log("You lose! The computer won with a total of " +computerScore + ".  You only scored " +humanScore + " points.");
     }
     else if (computerScore === humanScore) {
-        console.log("Its a draw!  You both scored " +humanScore);
+        console.log("Its a draw!  You both scored " + humanScore + ".");
     }
 }
 
 // Function to call playRound until five rounds are played
+// Currently running until 6 total rounds played
 
 function playGame() { 
     console.log(playRound());
-    if (humanScore + computerScore <= 5) {
+    if (humanScore + computerScore + tieScore <= 4) {
         playGame();
     } else { 
    gameOver();
    }
 }
 
-//playGame();
+playGame();
