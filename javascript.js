@@ -67,7 +67,7 @@ function gameOver() {
         console.log("Congrats! You win with a total of " + humanScore + ".  The computer scored " + computerScore +".");
     }
     else if (computerScore > humanScore) {
-        console.log("You lose! The computer won with a total of " +computerScore + ".  You only scored " +humanScore + " points.");
+        console.log("You lose! The computer won with a total of " +computerScore + ".  You only scored " +humanScore + " point(s).");
     }
     else if (computerScore === humanScore) {
         console.log("Its a draw!  You both scored " + humanScore + ".");
