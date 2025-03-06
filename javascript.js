@@ -1,29 +1,3 @@
-
-// Generate random number for rock, paper or scissors for computer
-let randomNumber = Math.random()
-
-function getComputerChoice() {
-        if (randomNumber < 0.33) {
-             return "rock";
-       } else if (randomNumber < 0.66) {
-            return "paper";
-       } else {
-           return "scissors";
-       }
-    }
-
-console.log("Computer has selected "+getComputerChoice()) // shows computer choice in console
-
-// Generate human selection
-
-let input = prompt("Please enter rock, paper or scissors");
-
-function getHumanChoice() { 
-    return input.toLowerCase();
-}
-
-console.log("You selected "+getHumanChoice()) // shows human choice in console
-
 // set initial scores to 0
 
 let humanScore = 0;
@@ -32,11 +6,36 @@ let computerScore = 0;
 // play a single round of rock, paper, scissors
 
 function playRound(humanChoice, computerChoice) {
-    if(humanChoice === 'rock' && computerChoice === 'rock' ) {
-        return "its a draw!"; }
-    else if(humanChoice === 'paper' && computerChoice === 'paper') {
-        return "its a draw!"; }
-    else if (humanChoice === 'scissors' && computerChoice === 'scissors') {
+
+    // Generate random number for rock, paper or scissors for computer
+    let randomNumber = Math.random()
+
+    function getComputerChoice() {
+        if (randomNumber < 0.33) {
+             return "rock";
+         } else if (randomNumber < 0.66) {
+            return "paper";
+         } else {
+           return "scissors";
+        }
+        }
+
+    console.log("Computer has selected "+getComputerChoice()) // shows computer choice in console
+
+    // Generate human selection
+
+    let input = prompt("Please enter rock, paper or scissors");
+
+    function getHumanChoice() { 
+        return input.toLowerCase();
+    }
+
+    console.log("You selected "+getHumanChoice()) // shows human choice in console
+
+    // Playround function starts here
+
+    
+    if(humanChoice === computerChoice ) {
         return "its a draw!"; }
     else if (humanChoice === 'paper' && computerChoice === 'scissors') {
         computerScore +=1;  
@@ -82,7 +81,7 @@ function endGame() {
     }
 }
 // Function to call playRound until five rounds are played
-
+// Needs to call for new input each time and run five rounds
 function playGame() { 
     if (humanScore + computerScore === 5) {
         endGame()
