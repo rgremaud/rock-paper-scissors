@@ -77,7 +77,7 @@ function gameOver() {
 // Function to call playRound until five rounds are played
 
 function playGame() { 
-    //console.log(playRound());
+    console.log(playRound());
     if (humanScore + computerScore <= 5) {
         playGame();
     } else { 
