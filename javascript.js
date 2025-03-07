@@ -1,5 +1,4 @@
 // Generate random number for rock, paper or scissors for computer
-// New formatting to allow calling function in playGame
 
 function getComputerChoice() {
     let randomNumber = Math.random()
@@ -13,7 +12,6 @@ function getComputerChoice() {
     }
 
 // Function for human selection
-// New formatting so I can call it in playGame
 
 function getHumanChoice() { 
     let input = prompt("Please enter rock, paper or scissors");
@@ -56,11 +54,7 @@ function playRound() {
     };   
 }
 
-//const computerSelection = getComputerChoice();
-//const humanSelection = getHumanChoice();
-
-// Loop game for 5 rounds, keeping overall score
-// endGame function to display when game is over
+// gameOver function to display when game is over
 
 function gameOver() {
     if (humanScore > computerScore) {
@@ -75,7 +69,6 @@ function gameOver() {
 }
 
 // Function to call playRound until five rounds are played
-// Currently running until 6 total rounds played
 
 function playGame() { 
     console.log(playRound());
