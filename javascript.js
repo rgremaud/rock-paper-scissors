@@ -11,24 +11,15 @@ function getComputerChoice() {
        }
     }
 
-// Function for human selection
+// Button select for human selection
 
-
-//function getHumanChoice() { 
-    //let input = prompt("Please enter rock, paper or scissors");
-    //return input.toLowerCase();
-        //}
-
-// Re-write human selection so getHumanChoice is defined by button click of rock, paper, scissors
-
-// buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll("button");
+let humanSelection;
 
-// we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
-  // and for each one we add a 'click' listener
-  button.addEventListener("click", () => {
-    alert("You selected " + button.id);
+    button.addEventListener("click", function() {
+    humanSelection = this.value;
+    console.log("You selected " + humanSelection);
   });
 });
 
@@ -93,4 +84,4 @@ function gameOver() {
    //}
 //}
 
-playGame();
+//playGame();
