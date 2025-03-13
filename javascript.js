@@ -30,18 +30,31 @@ let humanScore = 0;
 let computerScore = 0;
 let tieScore = 0;
 
-
 const container = document.querySelector("#container");
 
-const content = document.createElement("div");
-content.classList.add("content");
-content.textContent = "Human score is: " + humanScore;
+    const contentHS = document.createElement("div");
+    contentHS.classList.add("contentHS");
+    contentHS.textContent = "Human score is: " + humanScore;
 
-container.appendChild(content);
+    container.appendChild(contentHS);
+
+    const contentCS = document.createElement("div");
+    contentCS.classList.add("contentHS");
+    contentCS.textContent = "Computer score is: " + computerScore;
+
+    container.appendChild(contentCS);
+
+    const contentTS = document.createElement("div");
+    contentTS.classList.add("contentTS");
+    contentTS.textContent = "Number of draws: " + tieScore;
+
+    container.appendChild(contentTS);
+
+
 
 // define a function for updating the score board
-// call the function as part of button click
-//function updateScore(humanScore,computerScore)
+// call the function as part of playRound function
+// function updateScore(humanScore,computerScore)
 
 function updateScoreboard(computerScore, humanScore) {
     document.querySelector('.computer_score').textContent = computerScore;
