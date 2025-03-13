@@ -18,22 +18,43 @@ let humanSelection;
 
 buttons.forEach((button) => {
     button.addEventListener("click", function() {
-    humanSelection = this.value;
-    console.log("You selected " + humanSelection);
+    mouseSelection = this.value;
+    console.log("You selected " + mouseSelection);
+    playRound();
+    updateScoreboard(computerScore, humanScore);
   });
 });
 
 // set initial scores to 0
-
 let humanScore = 0;
 let computerScore = 0;
 let tieScore = 0;
+
+
+const container = document.querySelector("#container");
+
+const content = document.createElement("div");
+content.classList.add("content");
+content.textContent = "Human score is: " + humanScore;
+
+container.appendChild(content);
+
+// define a function for updating the score board
+// call the function as part of button click
+//function updateScore(humanScore,computerScore)
+
+function updateScoreboard(computerScore, humanScore) {
+    document.querySelector('.computer_score').textContent = computerScore;
+    document.querySelector('.player_score').textContent = humanScore;
+}
+
 
 // play a single round of rock, paper, scissors
 
 function playRound() {
     let computerSelection = getComputerChoice();
-    let humanSelection = getHumanChoice();
+    console.log("The computer selected " + computerSelection);
+    let humanSelection = mouseSelection;
     if(humanSelection === computerSelection) {
         tieScore +=1;
         return "its a draw!"; }
