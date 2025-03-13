@@ -13,10 +13,24 @@ function getComputerChoice() {
 
 // Function for human selection
 
-function getHumanChoice() { 
-    let input = prompt("Please enter rock, paper or scissors");
-    return input.toLowerCase();
-        }
+
+//function getHumanChoice() { 
+    //let input = prompt("Please enter rock, paper or scissors");
+    //return input.toLowerCase();
+        //}
+
+// Re-write human selection so getHumanChoice is defined by button click of rock, paper, scissors
+
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll("button");
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    alert("You selected " + button.id);
+  });
+});
 
 // set initial scores to 0
 
@@ -70,13 +84,13 @@ function gameOver() {
 
 // Function to call playRound until five rounds are played
 
-function playGame() { 
-    console.log(playRound());
-    if (humanScore + computerScore + tieScore <= 4) {
-        playGame();
-    } else { 
-   gameOver();
-   }
-}
+//function playGame() { 
+    //console.log(playRound());
+    //if (humanScore + computerScore + tieScore <= 4) {
+        //playGame();
+    //} else { 
+   //gameOver();
+   //}
+//}
 
 playGame();
