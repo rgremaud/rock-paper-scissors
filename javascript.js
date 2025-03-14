@@ -1,15 +1,22 @@
-// Generate random number for rock, paper or scissors for computer
+let humanScore = 0;
+let computerScore = 0;
+let tieScore = 0;
+let computerChoice = "";
+let humanChoice = "";
 
-function getComputerChoice() {
+
+function getComputerChoice(computerChoice) {
     let randomNumber = Math.random()
         if (randomNumber < 0.33) {
-             return "rock";
+            return "rock";
        } else if (randomNumber < 0.66) {
             return "paper";
        } else {
            return "scissors";
        }
     }
+
+
 
 // Button select for human selection
 
@@ -21,32 +28,30 @@ buttons.forEach((button) => {
     mouseSelection = this.value;
     console.log("You selected " + mouseSelection);
     playRound();
-    updateScoreboard(computerScore, humanScore);
+    contentHS.textContent = `Human score is: ${humanScore}`;
+    contentCS.textContent = `Computer score is: ${computerScore}`;
+    contentTS.textContent = `Number of draws: ${tieScore}`;
   });
 });
 
-// set initial scores to 0
-let humanScore = 0;
-let computerScore = 0;
-let tieScore = 0;
 
 const container = document.querySelector("#container");
 
     const contentHS = document.createElement("div");
     contentHS.classList.add("contentHS");
-    contentHS.textContent = "Human score is: " + humanScore;
+    contentHS.textContent = `Human score is: ${humanScore}`;
 
     container.appendChild(contentHS);
 
     const contentCS = document.createElement("div");
     contentCS.classList.add("contentHS");
-    contentCS.textContent = "Computer score is: " + computerScore;
+    contentCS.textContent = `Computer score is: ${computerScore}`;
 
     container.appendChild(contentCS);
 
     const contentTS = document.createElement("div");
     contentTS.classList.add("contentTS");
-    contentTS.textContent = "Number of draws: " + tieScore;
+    contentTS.textContent = `Number of draws: ${tieScore}`;
 
     container.appendChild(contentTS);
 
