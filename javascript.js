@@ -24,13 +24,21 @@ const buttons = document.querySelectorAll("button");
 let humanSelection;
 
 buttons.forEach((button) => {
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function buttonClick() {
     mouseSelection = this.value;
     console.log("You selected " + mouseSelection);
     playRound();
     contentHS.textContent = `Human score is: ${humanScore}`;
     contentCS.textContent = `Computer score is: ${computerScore}`;
     contentTS.textContent = `Number of draws: ${tieScore}`;
+    if (humanScore === 5 || computerScore === 5) {
+        console.log("Game end test!")
+        gameOver();
+        rock.removeEventListener('click', buttonClick); // removes button click when both humanScore and computerScore get to 5
+        paper.removeEventListener('click', buttonClick);
+        scissors.removeEventListener('click', buttonClick);
+    }
+    //gameOver();
   });
 });
 
@@ -55,17 +63,11 @@ const container = document.querySelector("#container");
 
     container.appendChild(contentTS);
 
+    const gameOverText = document.createElement("h3")
+    gameOverText.classList.add("gameOverText");
+    gameOverText.textContent = `First to five wins.  Good luck!`
 
-
-// define a function for updating the score board
-// call the function as part of playRound function
-// function updateScore(humanScore,computerScore)
-
-function updateScoreboard(computerScore, humanScore) {
-    document.querySelector('.computer_score').textContent = computerScore;
-    document.querySelector('.player_score').textContent = humanScore;
-}
-
+    container.appendChild(gameOverText);
 
 // play a single round of rock, paper, scissors
 
@@ -101,16 +103,27 @@ function playRound() {
 // gameOver function to display when game is over
 
 function gameOver() {
-    if (humanScore > computerScore) {
-        console.log("Congrats! You win with a total of " + humanScore + ".  The computer scored " + computerScore +".");
+    if (humanScore === 5) {
+        const humanWins = document.createElement("h3");
+        humanWins.classList.add("humanWins");
+        humanWins.textContent = `You win!  Good job!`;
+
+        container.appendChild(humanWins);
+        
     }
-    else if (computerScore > humanScore) {
-        console.log("You lose! The computer won with a total of " +computerScore + ".  You only scored " +humanScore + " point(s).");
+    else if (computerScore === 5) {
+        const computerWins = document.createElement("h3");
+        computerWins.classList.add("computerWins");
+        computerWins.textContent = `You suck!  The computer wins.`;
+
+        container.appendChild(computerWins);
+
     }
-    else if (computerScore === humanScore) {
-        console.log("Its a draw!  You both scored " + humanScore + ".");
+    else {
+        ''
     }
-}
+    }
+
 
 // Function to call playRound until five rounds are played
 
