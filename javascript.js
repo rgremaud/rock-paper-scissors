@@ -59,22 +59,13 @@ buttons.forEach((button) => {
     if (humanScore === 5 || computerScore === 5) {
         console.log("Game end test!")
         gameOver();
-        //button.removeEventListener("click", buttonClick);  // removes button click for each option once, allowing for win condition three times    
+        button.removeEventListener("click", buttonClick);  // removes button click for each option once, allowing for win condition three times    
         rock.setAttribute("style", "color: blue; background: pink;");
         paper.setAttribute("style", "color: blue; background: pink;");
         scissors.setAttribute("style", "color: blue; background: pink;");
-        //rock.removeEventListener("click", buttonClick);
-        //paper.removeEventListener("click", buttonClick);
-        //scissors.removeEventListener("click", buttonClick);
-    }
+      }
   });
 });
-
-
-function freezeButtons() {
-buttons.forEach((button) => { button.removeEventListener("click", buttonClick())});
-}
-   
 
 // play a single round of rock, paper, scissors
 
