@@ -4,45 +4,6 @@ let tieScore = 0;
 let computerChoice = "";
 let humanChoice = "";
 
-
-function getComputerChoice(computerChoice) {
-    let randomNumber = Math.random()
-        if (randomNumber < 0.33) {
-            return "rock";
-       } else if (randomNumber < 0.66) {
-            return "paper";
-       } else {
-           return "scissors";
-       }
-    }
-
-
-
-// Button select for human selection
-
-const buttons = document.querySelectorAll("button");
-let humanSelection;
-
-buttons.forEach((button) => {
-    button.addEventListener("click", function buttonClick() {
-    mouseSelection = this.value;
-    console.log("You selected " + mouseSelection);
-    playRound();
-    contentHS.textContent = `Human score is: ${humanScore}`;
-    contentCS.textContent = `Computer score is: ${computerScore}`;
-    contentTS.textContent = `Number of draws: ${tieScore}`;
-    if (humanScore === 5 || computerScore === 5) {
-        console.log("Game end test!")
-        gameOver();
-        rock.removeEventListener('click', buttonClick); // removes button click when both humanScore and computerScore get to 5
-        paper.removeEventListener('click', buttonClick);
-        scissors.removeEventListener('click', buttonClick);
-    }
-    //gameOver();
-  });
-});
-
-
 const container = document.querySelector("#container");
 
     const contentHS = document.createElement("div");
@@ -68,6 +29,52 @@ const container = document.querySelector("#container");
     gameOverText.textContent = `First to five wins.  Good luck!`
 
     container.appendChild(gameOverText);
+
+// randomNumber for computer selection    
+
+function getComputerChoice(computerChoice) {
+    let randomNumber = Math.random()
+        if (randomNumber < 0.33) {
+            return "rock";
+       } else if (randomNumber < 0.66) {
+            return "paper";
+       } else {
+           return "scissors";
+       }
+    }
+
+// Button select for human selection
+
+const buttons = document.querySelectorAll("button");
+let humanSelection;
+
+buttons.forEach((button) => {
+    button.addEventListener("click", function buttonClick() {
+    mouseSelection = this.value;
+    console.log("You selected " + mouseSelection);
+    playRound();
+    contentHS.textContent = `Human score is: ${humanScore}`;
+    contentCS.textContent = `Computer score is: ${computerScore}`;
+    contentTS.textContent = `Number of draws: ${tieScore}`;
+    if (humanScore === 5 || computerScore === 5) {
+        console.log("Game end test!")
+        gameOver();
+        //button.removeEventListener("click", buttonClick);  // removes button click for each option once, allowing for win condition three times    
+        rock.setAttribute("style", "color: blue; background: pink;");
+        paper.setAttribute("style", "color: blue; background: pink;");
+        scissors.setAttribute("style", "color: blue; background: pink;");
+        //rock.removeEventListener("click", buttonClick);
+        //paper.removeEventListener("click", buttonClick);
+        //scissors.removeEventListener("click", buttonClick);
+    }
+  });
+});
+
+
+function freezeButtons() {
+buttons.forEach((button) => { button.removeEventListener("click", buttonClick())});
+}
+   
 
 // play a single round of rock, paper, scissors
 
@@ -117,7 +124,7 @@ function gameOver() {
         computerWins.textContent = `You suck!  The computer wins.`;
 
         container.appendChild(computerWins);
-
+      
     }
     else {
         ''
